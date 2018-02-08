@@ -33,3 +33,6 @@ You then have to update the result "sample.html" and check every changes is OK.
 
 - Now you can build the current project
 
+## Slides
+
+Please see xml-prague-2018-xspec-user-meetup-it.odp
