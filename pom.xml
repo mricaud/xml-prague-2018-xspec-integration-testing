@@ -15,7 +15,7 @@
     </dependency>
     <dependency>
       <groupId>eu.els.lib.xsl</groupId>
-      <artifactId>xslLib</artifactId>
+      <artifactId>myXslLib</artifactId>
       <version>1.0</version>
     </dependency>
   </dependencies>
