@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>eu.els.projets.ouvrage</groupId>
+  <artifactId>ouvrage2html</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  
+  <dependencies>
+    <dependency>
+      <groupId>eu.els.lib.xsl</groupId>
+      <artifactId>cals2html</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>eu.els.lib.xsl</groupId>
+      <artifactId>xslLib</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    
+    <resources>
+      <resource>
+        <directory>src/main/xsl</directory>
+      </resource>
+    </resources>
+    
+    <plugins>
+      
+      <plugin>
+        <groupId>top.marchand.xml.maven</groupId>
+        <artifactId>catalogBuilder-maven-plugin</artifactId>
+        <version>1.0.4</version>
+        <executions>
+          <execution>
+            <id>preparation</id>
+            <goals>
+              <goal>catalog</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>packaging</id>
+            <phase>package</phase>
+            <goals>
+              <goal>catalog</goal>
+            </goals>
+            <configuration>
+              <rewriteToProtocol>cp</rewriteToProtocol>
+              <catalogFileName>target/generated-catalog/catalog.xml</catalogFileName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>io.xspec.maven</groupId>
+        <artifactId>xspec-maven-plugin</artifactId>
+        <version>1.5.1-RC6</version>
+        <dependencies>
+          <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.8.0-8</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <catalogFile>catalog.xml</catalogFile>
+          <generateSurefireReport>true</generateSurefireReport>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>run-xspec</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+    </plugins>
+  </build>
+  
+</project>

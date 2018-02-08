@@ -1,0 +1,5 @@
+target/
+catalog.xml
+
+# report
+src/test/xspec/**/*.html

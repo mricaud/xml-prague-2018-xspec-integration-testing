@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description 
+  xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  stylesheet="xspec.override-xslt/ouvrage-to-html.xsl"
+  >
+  <!--../../main/xsl/ouvrage-to-html.xsl-->
+  
+  <x:scenario label="Ouvrage to HTML" xml:base="../sample/">
+    <x:context href="sample.xml"/>
+    <x:expect label="HTML" select="/*" href="sample.html"/>
+  </x:scenario>
+  
+</x:description>
