@@ -11,15 +11,13 @@
   exclude-result-prefixes="#all"
   version="2.0">
   
-  <xsl:import href="cals2html:/cals2html.xsl"/>
-  
   <xd:doc scope="stylesheet">
     <xd:desc>
       <xd:p>This XSLT convert any "Ouvrage XML" to HTML</xd:p>
     </xd:desc>
   </xd:doc>
   
-  <xsl:output method="xhtml"/>
+  <xsl:output method="html"/>
   
   <!--===========================-->
   <!--INIT-->
@@ -36,7 +34,6 @@
   <xsl:template match="/ouvrage" mode="ouvrage-to-html:main">
     <html>
       <head>
-        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
         <title>Ouvrage</title>
       </head>
       <body>
@@ -67,15 +64,6 @@
     <p>
       <xsl:apply-templates mode="#current"/>
     </p>
-  </xsl:template>
-  
-  <xsl:template match="cals:table" mode="ouvrage-to-html:main">
-    <xsl:variable name="cals:table" as="document-node()">
-      <xsl:document>
-        <xsl:sequence select="."/>
-      </xsl:document>
-    </xsl:variable>
-    <xsl:apply-templates select="$cals:table" mode="elsLib:cals2html"/>
   </xsl:template>
   
 </xsl:stylesheet>

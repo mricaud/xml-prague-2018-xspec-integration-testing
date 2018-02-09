@@ -10,11 +10,6 @@
   <dependencies>
     <dependency>
       <groupId>eu.els.lib</groupId>
-      <artifactId>cals2html</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>eu.els.lib</groupId>
       <artifactId>myXslLib</artifactId>
       <version>1.0</version>
     </dependency>
@@ -29,6 +24,31 @@
     </resources>
     
     <plugins>
+      
+      <plugin>
+        <groupId>io.xspec.maven</groupId>
+        <artifactId>xspec-maven-plugin</artifactId>
+        <version>1.5.1-RC7</version>
+        <dependencies>
+          <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.8.0-8</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <catalogFile>catalog.xml</catalogFile>
+          <generateSurefireReport>true</generateSurefireReport>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>run-xspec</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       
       <plugin>
         <groupId>top.marchand.xml.maven</groupId>
@@ -51,31 +71,6 @@
               <rewriteToProtocol>cp</rewriteToProtocol>
               <catalogFileName>target/generated-catalog/catalog.xml</catalogFileName>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      
-      <plugin>
-        <groupId>io.xspec.maven</groupId>
-        <artifactId>xspec-maven-plugin</artifactId>
-        <version>1.5.1-RC7</version>
-        <dependencies>
-          <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>Saxon-HE</artifactId>
-            <version>9.8.0-8</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <catalogFile>catalog.xml</catalogFile>
-          <generateSurefireReport>true</generateSurefireReport>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>test</phase>
-            <goals>
-              <goal>run-xspec</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>

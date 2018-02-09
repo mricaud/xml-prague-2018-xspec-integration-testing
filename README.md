@@ -31,7 +31,7 @@ You then have to update the result "sample.html" and check every changes is OK.
 - Build each dependency by lauching: `mvn install`
 (when lauching this command the current working directory must be the one of the pom.xml of the project is)
 
-- Now you can build the current project
+- Now you can build the current project or just test it using: `mvn test` 
 
 ## Slides
 
