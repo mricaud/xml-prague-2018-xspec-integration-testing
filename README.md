@@ -10,7 +10,7 @@ cals2html is a common task, so we call a library that do it, using:
 <xsl:import href="cals2html:/cals2html.xsl"/>
 ```
 
-This special URI is resolved thanks to a catalog.xml which is build by the maven XSpec pluging.
+This special URI is resolved thanks to a catalog.xml which is build by the [xspec-maven-plugin](https://github.com/xspec/xspec-maven-plugin-1).
 
 ## Integration Test
 
