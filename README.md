@@ -1,4 +1,6 @@
-# XML Prague 2018 - XSPEC meetup : Use case of xspec integration test with Maven and Oxygen
+# XML Prague 2018
+## XSPEC user meeting
+### Use case of xspec integration test with Maven and Oxygen
 
 See https://github.com/xspec/xspec/issues/158
 
